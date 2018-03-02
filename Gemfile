@@ -1,13 +1,19 @@
 source 'https://rubygems.org'
 
+ruby '2.3.5'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
+
+gem 'pg', '~> 0.18'
+gem 'rails_12factor', group: :production
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -24,6 +30,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc',          group: :doc
+
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+gem 'spring',        group: :development
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -52,12 +63,5 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-group :development do
-  gem 'sqlite3' 
-end
 
-group :production do
-  gem 'pg', '~> 0.18.4'
-  gem 'rails_12factor' 
-end
 
